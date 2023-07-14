@@ -12,7 +12,7 @@ const normalizePort = val => {
   }
   return false;
 };
-const port = normalizePort(process.env.PORT || '3006');
+const port = normalizePort(process.env.PORT || ' http://trangpham.gcalls.vn');
 app.set('port', port);
 
 const errorHandler = error => {
