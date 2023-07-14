@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import LoginPage from './Login';
 import TodoPage from './Todo';
 import RegisterPage from './Register';
-
+import './App.css';
 function App() {
   return (
     <Router>
