@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
+const BASE_URL ="http://localhost:3006";
 
 export const register = async (email, password) => {
   try {

@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_ENDPOINT = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
+const API_ENDPOINT ="http://localhost:3006";
 
 // Hàm để lấy tất cả các công việc
 export const getAllTasks = () => {
