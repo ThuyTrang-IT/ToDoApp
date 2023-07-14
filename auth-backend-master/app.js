@@ -67,6 +67,10 @@ app.post("/register", async (req, res) => {
   }
 });
 
+app.get("/api", (req, res) => {
+  res.send("Hello my api")
+})
+
 // login
 app.post("/login", async (req, res) => {
   const email = req.body.email;
@@ -77,7 +81,7 @@ app.post("/login", async (req, res) => {
 
   if (!user) {
     console.log(`User with email ${email} not found`);
-    return res.status(401).json({ message: "Invalid email or password" });
+    return res.status(401).json({ message: "Invalid email or password", data: null });
   }
 
   const userpassword = user.password;
@@ -86,7 +90,7 @@ app.post("/login", async (req, res) => {
 
   if (!isPasswordValid) {
     console.log(`Password for user ${email} is invalid`);
-    return res.status(401).json({ message: "Invalid email or password" });
+    return res.status(401).json({ message: "Invalid email or password", data: null });
   }
 
   console.log(`User ${email} has successfully logged in`);

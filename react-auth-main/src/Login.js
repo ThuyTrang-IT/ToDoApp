@@ -16,7 +16,8 @@ function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const data = await login(email, password);
+      const {data} = await login(email, password);
+
       if (data) { // Kiểm tra xem biến data có giá trị hay không
         localStorage.setItem('access_token', data.access_token);
         setIsLoading(false);

@@ -1,15 +1,11 @@
 import axios from "axios";
-const BASE_URL = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`; // Đường dẫn đến server API
+
+const BASE_URL = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
 
 export const register = async (email, password) => {
   try {
-    const response = await fetch(`${BASE_URL}/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    return data;
+    const response = await axios.post(`${BASE_URL}/register`, { email, password });
+    return response.data;
   } catch (error) {
     console.error(error);
   }
