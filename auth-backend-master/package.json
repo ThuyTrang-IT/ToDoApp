@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prod": "pm2 start 'npm start' --name todoAppBackend --no-daemon --log-date-format='MM-DD hh:mm:ss.SSS A'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
