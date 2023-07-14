@@ -28,7 +28,7 @@ module.exports.deleteToDo = (req, res) => {
       .then(() => res.status(201).send("Deleted Successfully..."))
       .catch((err) => {
         console.log(err);
-        res.status(400).send("Failed to delete item.");
+        res.send("Failed to delete item.");
       });
   } catch (error) {
     console.log(error);
@@ -52,6 +52,6 @@ module.exports.updateToDo = (req, res) => {
     )
     .catch((err) => {
       console.log(err);
-      res.status(400).send("Failed to update item.");
+      res.send("Failed to update item.");
     });
 };
