@@ -1,5 +1,5 @@
-import axios from 'axios';
-const API_ENDPOINT = 'http://localhost:3006';
+import axios from "axios";
+const API_ENDPOINT = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
 
 // Hàm để lấy tất cả các công việc
 export const getAllTasks = () => {
@@ -15,15 +15,21 @@ export const getTaskById = (id) => {
 
 // Hàm để thêm một công việc mới
 export const addTask = (task) => {
-  return axios.post(`${API_ENDPOINT}/todo`, task).then((response) => response.data);
+  return axios
+    .post(`${API_ENDPOINT}/todo`, task)
+    .then((response) => response.data);
 };
 
 // Hàm để cập nhật một công việc
 export const updateTask = (id, task) => {
-  return axios.put(`${API_ENDPOINT}/todo/${id}`, task).then((response) => response.data);
+  return axios
+    .put(`${API_ENDPOINT}/todo/${id}`, task)
+    .then((response) => response.data);
 };
 
 //Hàm để xóa một công việc
 export const deleteTask = (id) => {
-  return axios.delete(`${API_ENDPOINT}/todo/${id}`).then((response) => response.data);
+  return axios
+    .delete(`${API_ENDPOINT}/todo/${id}`)
+    .then((response) => response.data);
 };
