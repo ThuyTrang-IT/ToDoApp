@@ -1,3 +1,3 @@
-const base_api = "http://localhost:3006"
+const base_api = "http://trangpham.gcalls.vn/api"
 
 export default base_api;
