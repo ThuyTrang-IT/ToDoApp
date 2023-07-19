@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL ="http://localhost:3006";
+const BASE_URL ="http://trangpham.gcalls.vn/api";
 
 export const register = async (email, password) => {
   try {
