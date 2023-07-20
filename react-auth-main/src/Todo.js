@@ -20,22 +20,24 @@ function App() {
   }, []);
 
   const handleAddTask = () => {
-    addTask({ text: newTask }).then((data) => setTasks([...tasks, data]));
+    addTask({ text: newTask, completed: false }).then((data) =>
+      setTasks([...tasks, data])
+    );
     setNewTask("");
   };
 
   const handleEditTask = (task) => {
-    // console.log(task);
     setEditingTask(task);
     setEditingText(task.text);
   };
 
   const handleSaveTask = () => {
-    updateTask(editingTask._id, { text: editingText }).then((data) => {
+    updateTask(editingTask._id, {
+      text: editingText,
+      completed: editingTask.completed,
+    }).then((data) => {
       const cloneTasks = [...tasks];
-      const oldTaskIndex = tasks.findIndex(
-        (task) => task._id === data.todo._id
-      );
+      const oldTaskIndex = tasks.findIndex((task) => task._id === data.todo._id);
       cloneTasks.splice(oldTaskIndex, 1, data.todo);
       setTasks(cloneTasks);
     });
@@ -44,7 +46,19 @@ function App() {
   };
 
   const handleDeleteTask = (_id) => {
-    deleteTask(_id).then(() => setTasks(tasks.filter((task) => task._id !== _id)));
+    deleteTask(_id).then(() =>
+      setTasks(tasks.filter((task) => task._id !== _id))
+    );
+  };
+
+  const handleToggleComplete = (task) => {
+    const updatedTask = { ...task, completed: !task.completed };
+    updateTask(task._id, updatedTask).then((data) => {
+      const cloneTasks = [...tasks];
+      const taskIndex = tasks.findIndex((t) => t._id === data.todo._id);
+      cloneTasks.splice(taskIndex, 1, data.todo);
+      setTasks(cloneTasks);
+    });
   };
 
   return (
@@ -83,7 +97,14 @@ function App() {
               </div>
             ) : (
               <div>
-                <span>{task.text}</span>
+                <input
+                  type="checkbox"
+                  checked={task.completed}
+                  onChange={() => handleToggleComplete(task)}
+                />
+                <span className={task.completed ? "completed-task" : ""}>
+                  {task.text}
+                </span>
                 <Button
                   variant="warning"
                   className="mx-2"
